@@ -13,4 +13,22 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <!--레시피 생성-->
+    <string name="menu_recipe">레시피 생성</string>
+    <string name="menu_recipe_add_research_templete">연구 레시피 템플릿 등록</string>
+    <string name="menu_recipe_add_simple">간단 레시피 등록</string>
+    <string name="menu_recipe_list">레시피 목록</string>
+
+    <!--레시피 공유-->
+    <string name="menu_share_recipe">레시피 공유</string>
+    <string name="menu_share_square_recipe">레시피 광장</string>
+    <string name="menu_share_suggest_templete">템플릿 제안</string>
+    <string name="menu_share_simple_recipe">간단 레시피 공유</string>
+    <string name="menu_share_in_action_research">참여중인 레시피 연구</string>
+
+    <!--게시판-->
+    <string name="menu_board_recipe">레시피 광장</string>
+    <string name="menu_board_report">연구 결과 보고서</string>
+    <string name="menu_board_free">자유게시판</string>
 </resources>

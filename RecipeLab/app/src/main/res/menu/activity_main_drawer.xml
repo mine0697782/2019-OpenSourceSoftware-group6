@@ -3,35 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
-    </group>
-
-    <item android:title="Communicate">
+    <item android:title="@string/menu_recipe">
         <menu>
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/menu_recipe_add_research_templete" />
+            <item
+                android:id="@+id/nav_gallery"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/menu_recipe_add_simple" />
+            <item
+                android:id="@+id/nav_slideshow"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/menu_recipe_list" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_share_recipe">
+        <menu>
+            <item
+                android:id="@+id/nav_tools"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/menu_share_square_recipe" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:title="@string/menu_share_suggest_templete" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:title="@string/menu_share_simple_recipe" />
+            <item
+                android:id="@+id/nav_send2"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_share_in_action_research" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_board_recipe">
+        <menu>
+            <item
+                android:id="@+id/nav_shar"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_board_report" />
+            <item
+                android:id="@+id/nav_sen"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_board_free" />
         </menu>
     </item>
 
