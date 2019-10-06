@@ -6,15 +6,15 @@
     <item android:title="@string/menu_recipe">
         <menu>
             <item
-                android:id="@+id/nav_home"
+                android:id="@+id/nav_recipe_add_research_tamplet"
                 android:icon="@drawable/ic_menu_camera"
-                android:title="@string/menu_recipe_add_research_templete" />
+                android:title="@string/menu_recipe_add_research_tamplet" />
             <item
-                android:id="@+id/nav_gallery"
+                android:id="@+id/nav_recipe_add_simple"
                 android:icon="@drawable/ic_menu_gallery"
                 android:title="@string/menu_recipe_add_simple" />
             <item
-                android:id="@+id/nav_slideshow"
+                android:id="@+id/nav_recipe_list"
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="@string/menu_recipe_list" />
         </menu>
@@ -23,19 +23,19 @@
     <item android:title="@string/menu_share_recipe">
         <menu>
             <item
-                android:id="@+id/nav_tools"
+                android:id="@+id/nav_share_square_recipe"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="@string/menu_share_square_recipe" />
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_share_suggest_tamplet"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share_suggest_templete" />
+                android:title="@string/menu_share_suggest_tamplet" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_share_simple_recipe"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_share_simple_recipe" />
             <item
-                android:id="@+id/nav_send2"
+                android:id="@+id/nav_share_in_action_research"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_share_in_action_research" />
         </menu>
@@ -44,11 +44,11 @@
     <item android:title="@string/menu_board_recipe">
         <menu>
             <item
-                android:id="@+id/nav_shar"
+                android:id="@+id/nav_board_report"
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_board_report" />
             <item
-                android:id="@+id/nav_sen"
+                android:id="@+id/nav_board_free"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_board_free" />
         </menu>
