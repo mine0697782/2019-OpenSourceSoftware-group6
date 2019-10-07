@@ -10,11 +10,11 @@ import com.example.recipelab.R
 import com.example.recipelab.model.ResearchTamplet
 import kotlinx.android.synthetic.main.item_research_list.view.*
 
-class ResearchTampletAdapter(val data: ArrayList<ResearchTamplet>, val controller: NavController) :
+class ResearchTampletAdapter(val data: ArrayList<ResearchTamplet>, val controller: NavController, val layout: Int) :
     RecyclerView.Adapter<ResearchTampletAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResearchTampletAdapter.ViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.item_research_list, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
 
         return ResearchTampletAdapter.ViewHolder(view)
     }

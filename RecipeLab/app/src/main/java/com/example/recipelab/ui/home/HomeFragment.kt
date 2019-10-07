@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipelab.R
 import com.example.recipelab.adapter.ResearchTampletAdapter
 import com.example.recipelab.model.ResearchTamplet
 import io.realm.Realm
-import io.realm.RealmList
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.ArrayList
 
@@ -23,10 +23,12 @@ class HomeFragment : Fragment() {
 
     lateinit var recyclerViewResearching: RecyclerView
     lateinit var recyclerViewFinished: RecyclerView
-    lateinit var adapter: ResearchTampletAdapter
+    lateinit var adapterTop: ResearchTampletAdapter
+    lateinit var adapterBottom: ResearchTampletAdapter
     lateinit var realm: Realm
 
-    val data: ArrayList<ResearchTamplet> = arrayListOf(
+
+    val data1: ArrayList<ResearchTamplet> = arrayListOf(
         ResearchTamplet(1),
         ResearchTamplet(2),
         ResearchTamplet(3),
@@ -39,6 +41,19 @@ class HomeFragment : Fragment() {
         ResearchTamplet(10)
     )
 
+    val data2: ArrayList<ResearchTamplet> = arrayListOf(
+        ResearchTamplet(1, "에티오피아 예거치프"),
+        ResearchTamplet(2, "브라질 산토스"),
+        ResearchTamplet(3, "케냐 AA"),
+        ResearchTamplet(4, "사향고양이 똥"),
+        ResearchTamplet(5, "강아지똥"),
+        ResearchTamplet(6, "에티오피아 예거치프2"),
+        ResearchTamplet(7, "에티오피아 예거치프"),
+        ResearchTamplet(8, "에티오피아 예거치프"),
+        ResearchTamplet(9, "에티오피아 예거치프"),
+        ResearchTamplet(10, "에티오피아 예거치프")
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,17 +63,21 @@ class HomeFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        adapter = ResearchTampletAdapter(data, controller)
+        adapterTop = ResearchTampletAdapter(data2, controller, R.layout.item_research_list_card)
 
+        val snapHelper = PagerSnapHelper()
         recyclerViewResearching = root.rv_list_researching
-        recyclerViewResearching.adapter = adapter
-        recyclerViewResearching.layoutManager = LinearLayoutManager(context)
+        recyclerViewResearching.adapter = adapterTop
+        recyclerViewResearching.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewResearching.addItemDecoration(
             DividerItemDecoration(context,
                 DividerItemDecoration.VERTICAL)
         )
+        snapHelper.attachToRecyclerView(recyclerViewResearching)
+
+        adapterBottom = ResearchTampletAdapter(data1, controller, R.layout.item_research_list)
         recyclerViewFinished = root.rv_list_research_finished
-        recyclerViewFinished.adapter = adapter
+        recyclerViewFinished.adapter = adapterBottom
         recyclerViewFinished.layoutManager = LinearLayoutManager(context)
         recyclerViewFinished.addItemDecoration(
             DividerItemDecoration(context,
