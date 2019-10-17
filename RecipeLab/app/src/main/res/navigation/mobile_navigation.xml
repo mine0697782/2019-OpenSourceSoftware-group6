@@ -18,14 +18,14 @@
     <fragment
         android:id="@+id/nav_recipe_researching_list"
         android:name="com.example.recipelab.ui.RecipeResearch.RecipeResearchingListFragment"
-        tools:layout="@layout/fragment_recipe_research_list"
+        tools:layout="@layout/content_recipe_research_list"
         android:label="연구 레시피"/>
 
     <fragment
         android:id="@+id/nav_recipe_add_research_tamplet"
         android:name="com.example.recipelab.ui.recipeAdd.AddResearchTampletFragment"
         android:label="@string/menu_recipe_add_research_tamplet"
-        tools:layout="@layout/fragment_recipe_add_research_tamplet" >
+        tools:layout="@layout/activity_recipe_add_research_tamplet" >
         <action
             android:id="@+id/action_nav_recipe_add_research_tamplet_to_nav_2"
             app:destination="@id/nav_2"
@@ -53,13 +53,9 @@
 
     <fragment
         android:id="@+id/nav_recipe_list"
-        android:name="com.example.recipelab.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" >
-        <action
-            android:id="@+id/action_nav_recipe_list_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
+        android:name="com.example.recipelab.ui.home.HomeFragment"
+        android:label="연구 레시피"
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_share_square_recipe"
