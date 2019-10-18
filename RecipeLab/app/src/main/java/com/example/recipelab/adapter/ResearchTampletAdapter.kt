@@ -42,7 +42,7 @@ class ResearchTampletAdapter(val data: ArrayList<ResearchTamplet>, val context: 
             view.setOnClickListener(listener)
             view.text_research_coffee_name.text = item.menu
             view.text_research_coffee_date.text = item.date
-            view.text_research_coffee_tag.text = "tag"
+            view.text_research_coffee_tag1.text = "tag"
         }
     }
 

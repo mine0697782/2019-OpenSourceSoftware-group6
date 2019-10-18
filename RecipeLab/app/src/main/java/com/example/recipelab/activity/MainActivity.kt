@@ -111,28 +111,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navView: NavigationView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener(this@MainActivity)
 
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.nav_home, /*R.id.nav_recipe_add_research_tamplet,*/
-//                R.id.nav_recipe_add_simple
-//                , /*R.id.nav_recipe_list,*/
-//                R.id.nav_share_square_recipe,
-//                R.id.nav_share_suggest_tamplet
-//                ,
-//                R.id.nav_share_simple_recipe,
-//                R.id.nav_share_in_action_research
-//                ,
-//                R.id.nav_board_report,
-//                R.id.nav_board_free
-//            ), drawerLayout
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navView.setupWithNavController(navController)
-
-
         val snapHelper = PagerSnapHelper()
         recyclerViewResearching = rv_list_researching
         recyclerViewResearching.adapter = adapterTop

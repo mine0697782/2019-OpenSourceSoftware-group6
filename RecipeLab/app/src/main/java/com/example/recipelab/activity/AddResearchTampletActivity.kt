@@ -10,7 +10,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.recipelab.R
+import com.example.recipelab.adapter.AddTampletElementsAdapter
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.content_add_research_tamplet.*
 import kotlinx.android.synthetic.main.nav_main.*
@@ -29,6 +33,11 @@ class AddResearchTampletActivity : AppCompatActivity(),
     lateinit var btnCommit: Button
     lateinit var btnAdd: TextView
 
+    lateinit var recyclerView: RecyclerView
+    lateinit var adapter: AddTampletElementsAdapter
+
+    var data: ArrayList<Int> = arrayListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_research_tamplet)
@@ -44,9 +53,25 @@ class AddResearchTampletActivity : AppCompatActivity(),
         btnCommit = btn_recipe_add_research_tamplet
         btnAdd = text_btn_add_elements
 
+
+        adapter = AddTampletElementsAdapter(this, data)
+
         btnAdd.setOnClickListener {
-            Toast.makeText(this,"asd",Toast.LENGTH_SHORT).show()
+            adapter.data.add(adapter.data.size+1)
+            adapter.notifyDataSetChanged()
+            Toast.makeText(this,adapter.data.size,Toast.LENGTH_SHORT).show()
         }
+
+        recyclerView = recyclerView_tamplet_elements_list
+        recyclerView.run {
+            adapter = adapter
+            layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            addItemDecoration(
+                DividerItemDecoration(applicationContext,
+                    DividerItemDecoration.HORIZONTAL)
+            )
+        }
+
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {

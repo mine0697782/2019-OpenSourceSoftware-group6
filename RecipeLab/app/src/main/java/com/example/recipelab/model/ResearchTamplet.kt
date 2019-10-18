@@ -23,6 +23,6 @@ open class ResearchTamplet(
     }
 
     override fun toString(): String {
-        return "id:"+id.toString()+" menu:"+menu+" date:"+date+" tag:"+tag.toString()+" researches: "//+researches.toString()
+        return "id:"+id.toString()+" menu:"+menu+" date:"+date+" tag:"+tag.toString()//+" researches: "+researches.toString()
     }
 }
