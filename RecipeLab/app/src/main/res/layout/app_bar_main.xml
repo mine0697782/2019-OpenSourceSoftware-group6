@@ -18,13 +18,13 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_add_white_50dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_testdata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_white_50dp" />
+        app:srcCompat="@drawable/ic_add_white_50dp" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
