@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipelab.R
 import com.example.recipelab.adapter.ResearchTampletAdapter
-import com.example.recipelab.manager.CustomLinearLayoutManager
 import com.example.recipelab.model.ResearchTamplet
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_home.view.*
