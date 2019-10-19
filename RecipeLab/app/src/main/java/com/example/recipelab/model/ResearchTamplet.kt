@@ -7,10 +7,11 @@ import io.realm.annotations.PrimaryKey
 open class ResearchTamplet(
     @PrimaryKey var id: Long = 0,
     open var menu: String? = "케냐 AA",//null,
-    open var date: String? = "yyyy.mm.dd",
+    open var date: String? = "yyyy.MM.dd",
     open var tag: RealmList<String> = RealmList(),
 //    open var researches: RealmList<Research> = RealmList(),
-    open var finished: Boolean = false
+    open var finished: Boolean = false,
+    open var comment: String = ""
 ) : RealmObject() {
 
     open fun toStringTag(): String? {

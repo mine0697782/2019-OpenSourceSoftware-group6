@@ -15,9 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipelab.R
 import com.example.recipelab.adapter.AddTampletElementsAdapter
+import com.example.recipelab.model.ResearchTamplet
 import com.google.android.material.navigation.NavigationView
+import io.realm.Realm
+import io.realm.kotlin.createObject
 import kotlinx.android.synthetic.main.content_add_research_tamplet.*
 import kotlinx.android.synthetic.main.nav_main.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AddResearchTampletActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +43,8 @@ class AddResearchTampletActivity : AppCompatActivity(),
     lateinit var adapter: AddTampletElementsAdapter
 
     var data: ArrayList<Int> = arrayListOf()
+
+    val realm = Realm.getDefaultInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +67,27 @@ class AddResearchTampletActivity : AppCompatActivity(),
         btnAdd.setOnClickListener {
             adapter.data.add(adapter.data.size+1)
             adapter.notifyDataSetChanged()
-            Toast.makeText(this,adapter.data.size,Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this,adapter.data.size,Toast.LENGTH_SHORT).show()
+        }
+
+        btnCommit.setOnClickListener {
+            realm.beginTransaction()
+
+            val time = SimpleDateFormat("yyyy-MM-dd").format(Date(System.currentTimeMillis())/*date*/)+" 수정"
+
+            realm.beginTransaction()
+            val currentId = realm.where<ResearchTamplet>(ResearchTamplet::class.java).max("id")
+            val nextId = if (currentId == null) 1 else currentId.toLong()+1
+
+            val newObject = realm.createObject<ResearchTamplet>(nextId)
+
+            newObject.menu = editTitle.text.toString()
+//            newObject.menu = nextId.toString()+"번"
+//            newObject.tag = editTag.text.toString()
+            newObject.date = time
+            newObject.comment = editComment.text.toString()
+
+            realm.commitTransaction()
         }
 
         recyclerView = recyclerView_tamplet_elements_list

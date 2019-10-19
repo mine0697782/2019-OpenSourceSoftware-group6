@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipelab.R
@@ -12,6 +13,7 @@ import com.example.recipelab.model.ResearchTamplet
 import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
 import io.realm.RealmList
+import kotlinx.android.synthetic.main.item_research_list.*
 import kotlinx.android.synthetic.main.nav_main.*
 
 class RecipeResearchingListActivity : AppCompatActivity(),
@@ -20,6 +22,10 @@ class RecipeResearchingListActivity : AppCompatActivity(),
     lateinit var navView: NavigationView
     lateinit var recyclerView: RecyclerView
     lateinit var realm: Realm
+
+    lateinit var textName: TextView
+    lateinit var textDate: TextView
+    lateinit var textTag: TextView
 
     lateinit var data: RealmList<Research>
 
@@ -34,11 +40,18 @@ class RecipeResearchingListActivity : AppCompatActivity(),
         navView = nav_view
         navView.setNavigationItemSelectedListener(this@RecipeResearchingListActivity)
 
+        textName = text_research_coffee_name
+        textDate = text_research_coffee_date
+        textTag = text_research_coffee_tag1
+
+        realm.beginTransaction()
+
+        
+
+        realm.commitTransaction()
+
 //        val bundle = intent.extras
 //        val itemId = realm.where(ResearchTamplet::class.java).equalTo("id",bundle?.getLong("key")).findFirst()
-//        val recipe =
-//        data = RealmList()
-//        data = recipe!!.researches
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

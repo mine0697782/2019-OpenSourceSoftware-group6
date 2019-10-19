@@ -21,7 +21,8 @@ import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import kotlinx.android.synthetic.main.app_bar_main.*
-import java.util.ArrayList
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -87,6 +88,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         testButton = fab_testdata
         testButton.setOnClickListener {
+//            val now = System.currentTimeMillis()
+//            val date = Date(now)
+//            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            val time = SimpleDateFormat("yyyy-MM-dd").format(Date(System.currentTimeMillis())/*date*/)+" 수정"
+
             realm.beginTransaction()
             val currentId = realm.where<ResearchTamplet>(ResearchTamplet::class.java).max("id")
             val nextId = if (currentId == null) 1 else currentId.toLong()+1
@@ -95,8 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 //            newObject.id = nextId
             newObject.menu = nextId.toString()+"번"
-
-
+            newObject.date = time
 
             realm.commitTransaction()
 
