@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recipelab.R
 import kotlinx.android.synthetic.main.item_tamplet_add_element.view.*
 
+
+//////////////////////////// 쓰이지 않는 어댑터 ///////////////////////////////
 class AddTampletElementsAdapter(val context: Context, var data: ArrayList<Int>) :
     RecyclerView.Adapter<AddTampletElementsAdapter.ViewHolder>(){
 
