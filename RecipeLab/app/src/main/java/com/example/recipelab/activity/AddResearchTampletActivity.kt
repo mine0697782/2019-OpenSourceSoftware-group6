@@ -91,6 +91,8 @@ class AddResearchTampletActivity : AppCompatActivity(),
 
             Toast.makeText(this,newObject.toString(),Toast.LENGTH_SHORT).show()
             Log.d(TAG,newObject.toString())
+
+            finish()
         }
 
         recyclerView = recyclerView_tamplet_elements_list

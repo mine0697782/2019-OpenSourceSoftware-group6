@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--<item
+    <item
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
         android:title="새로고침"
-        app:showAsAction="never" />-->
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_modify"
+        android:orderInCategory="100"
+        android:title="레시피 수정"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_finish"
         android:orderInCategory="100"

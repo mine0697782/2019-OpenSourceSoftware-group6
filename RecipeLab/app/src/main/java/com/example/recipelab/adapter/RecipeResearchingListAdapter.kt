@@ -9,7 +9,7 @@ import com.example.recipelab.R
 import com.example.recipelab.model.Research
 import kotlinx.android.synthetic.main.item_recipe_elements.view.*
 
-class RecipeResearchingListAdapter(val data: ArrayList<Research>) :
+class RecipeResearchingListAdapter(var data: ArrayList<Research>) :
     RecyclerView.Adapter<RecipeResearchingListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe_elements,parent,false)
@@ -35,11 +35,11 @@ class RecipeResearchingListAdapter(val data: ArrayList<Research>) :
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v){
         val view = v
         fun bind(listener: View.OnClickListener, item: Research) {
-//            view.text_elements_1.text = item.date
-//            view.text_elements_2.text = item.bean
-//            view.text_elements_3.text = item.water
-//            view.text_elements_4.text = item.time
-//            view.text_elements_5.text = item.score
+            view.text_elements_1.text = item.date
+            view.text_elements_2.text = item.bean
+            view.text_elements_3.text = item.water
+            view.text_elements_4.text = item.time
+            view.text_elements_5.text = item.score
         }
     }
 }

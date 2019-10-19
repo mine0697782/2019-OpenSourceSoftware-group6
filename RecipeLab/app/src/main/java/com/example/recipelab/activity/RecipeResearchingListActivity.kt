@@ -1,18 +1,24 @@
 package com.example.recipelab.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipelab.R
+import com.example.recipelab.adapter.RecipeResearchingListAdapter
 import com.example.recipelab.model.Research
 import com.example.recipelab.model.ResearchTamplet
 import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
 import io.realm.RealmList
+import kotlinx.android.synthetic.main.content_add_research_tamplet.*
 import kotlinx.android.synthetic.main.content_recipe_research_list.*
 import kotlinx.android.synthetic.main.item_research_list.*
 import kotlinx.android.synthetic.main.nav_main.*
@@ -23,12 +29,13 @@ class RecipeResearchingListActivity : AppCompatActivity(),
     lateinit var navView: NavigationView
     lateinit var recyclerView: RecyclerView
     lateinit var realm: Realm
+    lateinit var adapter: RecipeResearchingListAdapter
 
     lateinit var textName: TextView
     lateinit var textDate: TextView
     lateinit var textTag: TextView
 
-    lateinit var data: RealmList<Research>
+    var data: ArrayList<Research> = arrayListOf()
 
     var key: Long? = 0
 
@@ -39,9 +46,19 @@ class RecipeResearchingListActivity : AppCompatActivity(),
         setSupportActionBar(toolbar)
         val fab = fab_add_research
         fab.setOnClickListener {
-
+            startActivity(Intent(this,AddResearchActivity::class.java).putExtra("key",key))
         }
 
+        adapter = RecipeResearchingListAdapter(data)
+        recyclerView = rv_list_researching_elements
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(this,
+                DividerItemDecoration.HORIZONTAL)
+        )
+
+        Realm.init(this)
 
         realm = Realm.getDefaultInstance()
 
@@ -60,7 +77,9 @@ class RecipeResearchingListActivity : AppCompatActivity(),
 
         textName.text = item?.menu
         textDate.text = item?.date
-//        textTag.text =
+
+        adapter.data.addAll(realm.where(Research::class.java).equalTo("recipeNum",key).findAll())
+        adapter.notifyDataSetChanged()
 
         realm.commitTransaction()
 
@@ -90,6 +109,15 @@ class RecipeResearchingListActivity : AppCompatActivity(),
                 realm.commitTransaction()
 
                 finish()
+            }
+
+            R.id.action_refresh -> {
+                realm.beginTransaction()
+                adapter.data.clear()
+                adapter.data.addAll(realm.where(Research::class.java).equalTo("recipeNum",key).findAll())
+                adapter.notifyDataSetChanged()
+                realm.commitTransaction()
+                Toast.makeText(this,"sibal",Toast.LENGTH_SHORT).show()
             }
         }
 
