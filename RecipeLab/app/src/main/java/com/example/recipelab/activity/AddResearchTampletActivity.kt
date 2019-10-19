@@ -71,11 +71,11 @@ class AddResearchTampletActivity : AppCompatActivity(),
         }
 
         btnCommit.setOnClickListener {
+
             realm.beginTransaction()
 
             val time = SimpleDateFormat("yyyy-MM-dd").format(Date(System.currentTimeMillis())/*date*/)+" 수정"
 
-            realm.beginTransaction()
             val currentId = realm.where<ResearchTamplet>(ResearchTamplet::class.java).max("id")
             val nextId = if (currentId == null) 1 else currentId.toLong()+1
 
@@ -88,6 +88,9 @@ class AddResearchTampletActivity : AppCompatActivity(),
             newObject.comment = editComment.text.toString()
 
             realm.commitTransaction()
+
+            Toast.makeText(this,newObject.toString(),Toast.LENGTH_SHORT).show()
+            Log.d(TAG,newObject.toString())
         }
 
         recyclerView = recyclerView_tamplet_elements_list

@@ -146,6 +146,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.action_refresh -> {
+                notifyToMain()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
 //        val navController = findNavController(R.id.nav_host_fragment)
 //        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
@@ -159,5 +168,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onDestroy() {
         super.onDestroy()
         realm.close()
+    }
+
+    open fun notifyToMain(){
+        realm.beginTransaction()
+
+        adapterTop.data.clear()
+        adapterTop.data.addAll(realm.where(ResearchTamplet::class.java).equalTo("finished", false).findAll())
+        adapterTop.notifyDataSetChanged()
+        adapterBottom.data.clear()
+        adapterBottom.data.addAll(realm.where(ResearchTamplet::class.java).equalTo("finished", true).findAll())
+        adapterBottom.notifyDataSetChanged()
+
+        realm.commitTransaction()
     }
 }

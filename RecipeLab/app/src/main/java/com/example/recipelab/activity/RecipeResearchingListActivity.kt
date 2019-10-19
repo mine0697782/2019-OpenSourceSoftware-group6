@@ -13,6 +13,7 @@ import com.example.recipelab.model.ResearchTamplet
 import com.google.android.material.navigation.NavigationView
 import io.realm.Realm
 import io.realm.RealmList
+import kotlinx.android.synthetic.main.content_recipe_research_list.*
 import kotlinx.android.synthetic.main.item_research_list.*
 import kotlinx.android.synthetic.main.nav_main.*
 
@@ -29,11 +30,18 @@ class RecipeResearchingListActivity : AppCompatActivity(),
 
     lateinit var data: RealmList<Research>
 
+    var key: Long? = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_research_list)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        val fab = fab_add_research
+        fab.setOnClickListener {
+
+        }
+
 
         realm = Realm.getDefaultInstance()
 
@@ -46,18 +54,46 @@ class RecipeResearchingListActivity : AppCompatActivity(),
 
         realm.beginTransaction()
 
-        
+        val bundle = intent.extras
+        key = bundle?.getLong("key")
+        val item = realm.where(ResearchTamplet::class.java).equalTo("id",key).findFirst()
+
+        textName.text = item?.menu
+        textDate.text = item?.date
+//        textTag.text =
 
         realm.commitTransaction()
 
-//        val bundle = intent.extras
-//        val itemId = realm.where(ResearchTamplet::class.java).equalTo("id",bundle?.getLong("key")).findFirst()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.researching, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.action_finish -> {
+                realm.beginTransaction()
+                val item = realm.where(ResearchTamplet::class.java).equalTo("id",key).findFirst()
+                item?.finished = true
+                realm.commitTransaction()
+
+                finish()
+            }
+
+            R.id.action_delete -> {
+                realm.beginTransaction()
+                val item = realm.where(ResearchTamplet::class.java).equalTo("id",key).findFirst()
+                item?.deleteFromRealm()
+                realm.commitTransaction()
+
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {
