@@ -27,6 +27,7 @@ import kotlin.collections.ArrayList
 
 class AddResearchTampletActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
+    // 탬플릿을 추가하는 액티비티
 
     private val TAG = "AddResearchTamplet"
 
@@ -61,37 +62,43 @@ class AddResearchTampletActivity : AppCompatActivity(),
         btnCommit = btn_recipe_add_research_tamplet
         btnAdd = text_btn_add_elements
 
-
         adapter = AddTampletElementsAdapter(this, data)
 
-        btnAdd.setOnClickListener {
-            adapter.data.add(adapter.data.size+1)
-            adapter.notifyDataSetChanged()
+        // 탬플릿에 재료를 추가하는 버튼, 구현에 실패함
+//        btnAdd.setOnClickListener {
+//            adapter.data.add(adapter.data.size+1)
+//            adapter.notifyDataSetChanged()
 //            Toast.makeText(this,adapter.data.size,Toast.LENGTH_SHORT).show()
-        }
+//        }
 
+        // 확인버튼
         btnCommit.setOnClickListener {
 
             realm.beginTransaction()
 
+            // 현재 시간을 받아와서 저장
             val time = SimpleDateFormat("yyyy-MM-dd").format(Date(System.currentTimeMillis())/*date*/)+" 수정"
 
-            val currentId = realm.where<ResearchTamplet>(ResearchTamplet::class.java).max("id")
+            // Realm 데이터베이스는 PrimaryKey가 자동으로 증가가 되지 않기 때문에
+            // 데이터베이스에 새로운 데이터를 추가하기 위해 가장 마지막 ID를 찾아 새로 추가할 ID 값을 직접 설정한다.
+            val currentId = realm.where(ResearchTamplet::class.java).max("id")
             val nextId = if (currentId == null) 1 else currentId.toLong()+1
 
+            // 새롭게 데이터를 생성함 (이 시점에서 이미 DB에 추가가 되있음)
             val newObject = realm.createObject<ResearchTamplet>(nextId)
 
+            // 초기화된 데이터에 저장할 정보를 직접 넣어줌
             newObject.menu = editTitle.text.toString()
-//            newObject.menu = nextId.toString()+"번"
-//            newObject.tag = editTag.text.toString()
             newObject.date = time
             newObject.comment = editComment.text.toString()
 
+            // DB를 닫음으로서 저장하는 과정이 끝남
             realm.commitTransaction()
 
             Toast.makeText(this,newObject.toString(),Toast.LENGTH_SHORT).show()
             Log.d(TAG,newObject.toString())
 
+            // 현재 액티비를 종료 (뒤로 나가기)
             finish()
         }
 

@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.nav_main.*
 
 class RecipeResearchingListActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
+    // 레시피를 클릭하면 연구기록이 보여지는 액티비티
 
     lateinit var navView: NavigationView
     lateinit var recyclerView: RecyclerView
