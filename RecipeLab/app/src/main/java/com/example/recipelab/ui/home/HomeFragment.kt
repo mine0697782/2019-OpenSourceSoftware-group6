@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        adapterTop = ResearchTampletAdapter(data2, controller, R.layout.item_research_list_card)
+//        adapterTop = ResearchTampletAdapter(dataBot, /*controller,*/ R.layout.item_research_list_card)
 
         val snapHelper = PagerSnapHelper()
         recyclerViewResearching = root.rv_list_researching
@@ -75,14 +75,19 @@ class HomeFragment : Fragment() {
         )
         snapHelper.attachToRecyclerView(recyclerViewResearching)
 
-        adapterBottom = ResearchTampletAdapter(data1, controller, R.layout.item_research_list)
+//        adapterBottom = ResearchTampletAdapter(dataTop,/* controller, */R.layout.item_research_list)
+
         recyclerViewFinished = root.rv_list_research_finished
-        recyclerViewFinished.adapter = adapterBottom
-        recyclerViewFinished.layoutManager = LinearLayoutManager(context)
-        recyclerViewFinished.addItemDecoration(
-            DividerItemDecoration(context,
-                DividerItemDecoration.VERTICAL)
-        )
+        recyclerViewFinished.run {
+            adapter = adapterBottom
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+        }
 
 //        val textView: TextView = root.findViewById(R.id.text_home)
 

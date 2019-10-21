@@ -34,7 +34,7 @@ class RecipeResearchingListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_recipe_research_list,container,false)
+        val root = inflater.inflate(R.layout.content_recipe_research_list,container,false)
 
         adapter = RecipeResearchingListAdapter(data)
         recyclerView.adapter = adapter

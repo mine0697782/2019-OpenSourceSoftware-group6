@@ -3,20 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/border_researching_frame"
         android:padding="15dp">
 
         <TextView
             android:id="@+id/text_on_going"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingStart="15dp"
             android:text="진행중"
-            android:textStyle="bold"
-            android:paddingStart="15dp"/>
+            android:textColor="@color/colorToolbarBlack"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_research_coffee_name"
@@ -25,6 +30,7 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="에티오피아 예가치프"
+            android:textColor="@color/colorToolbarBlack"
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/text_on_going" />
@@ -36,17 +42,49 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:text="2019 05 05"
+            android:textColor="@color/colorToolbarBlack"
             android:textSize="14dp"
             app:layout_constraintTop_toBottomOf="@id/text_research_coffee_name" />
 
         <TextView
-            android:id="@+id/text_research_coffee_tag"
-            android:layout_width="match_parent"
+            android:id="@+id/text_research_coffee_tag1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_researching_frame_tag"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:paddingBottom="5dp"
             android:text="tag"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/text_research_coffee_date" />
+
+        <TextView
+            android:id="@+id/text_research_coffee_tag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_researching_frame_tag"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="5dp"
+            android:text="tag"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toRightOf="@+id/text_research_coffee_tag1"
+            app:layout_constraintTop_toBottomOf="@id/text_research_coffee_date" />
+
+        <TextView
+            android:id="@+id/text_research_coffee_tag3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_researching_frame_tag"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="5dp"
+            android:text="tag"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toRightOf="@+id/text_research_coffee_tag2"
             app:layout_constraintTop_toBottomOf="@id/text_research_coffee_date" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
