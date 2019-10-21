@@ -19,9 +19,6 @@
             android:name=".activity.AddResearchTampletActivity"
             android:label="Add Tamplet" />
         <activity
-            android:name=".activity.Main2Activity"
-            android:label="TestActivity" />
-        <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name">
             <intent-filter>

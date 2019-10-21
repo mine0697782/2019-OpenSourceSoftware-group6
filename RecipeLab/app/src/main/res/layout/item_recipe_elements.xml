@@ -12,7 +12,8 @@
         android:padding="10dp"
         android:text="날짜"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="@color/colorToolbarBlack"/>
 
     <TextView
         android:id="@+id/text_elements_2"
@@ -22,7 +23,8 @@
         android:padding="10dp"
         android:text="원두"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="@color/colorToolbarBlack"/>
 
     <TextView
         android:id="@+id/text_elements_3"
@@ -32,7 +34,8 @@
         android:padding="10dp"
         android:text="물"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="@color/colorToolbarBlack"/>
 
     <TextView
         android:id="@+id/text_elements_4"
@@ -42,7 +45,8 @@
         android:padding="10dp"
         android:text="시간"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="@color/colorToolbarBlack"/>
 
     <TextView
         android:id="@+id/text_elements_5"
@@ -52,6 +56,7 @@
         android:padding="10dp"
         android:text="평가"
         android:textSize="20dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/colorToolbarBlack"/>
 
 </LinearLayout>

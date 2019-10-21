@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+//z        this.window.statusBarColor = "#E3BE49".toInt()
+
         // 화면 우측 하단의 버튼을 찾고, 클릭 이벤트를 감지하도록 메서드 설정
         val floatingBtn: FloatingActionButton = fab
         floatingBtn.setOnClickListener {

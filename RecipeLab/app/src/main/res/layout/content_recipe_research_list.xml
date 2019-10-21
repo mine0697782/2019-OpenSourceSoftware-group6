@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <ScrollView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -31,9 +31,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <include layout="@layout/item_research_list" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorToolbarPrimary">
+                    <include layout="@layout/item_research_list" />
+                </LinearLayout>
 
-                <include layout="@layout/item_recipe_elements" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorToolbarPrimaryLight">
+
+                    <include layout="@layout/item_recipe_elements" />
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_list_researching_elements"
